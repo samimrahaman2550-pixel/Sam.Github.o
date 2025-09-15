@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TrustAvive — Honest Health Product Reviews</title>
+  <meta name="description" content="TrustAvive: unbiased reviews, ratings and buying guides for health products. In-depth tests, pros & cons, and top picks to help you choose confidently.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Simple, modern responsive layout for a health product review site */
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#06b6d4; /* teal */
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,#071024 0%, #071022 60%, #071a2b 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .container{max-width:1100px;margin:32px auto;padding:24px}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;
+      gap:20px
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#06202a;box-shadow:0 6px 18px rgba(6,182,212,0.08)
+    }
+    .site-title{font-weight:700;font-size:18px}
+    .site-sub{font-size:13px;color:var(--muted);margin-top:2px}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-bottom:28px
+    }
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.5)}
+    .hero h1{margin:0;font-size:28px}
+    .hero p{color:var(--muted);margin-top:10px}
+    .search{
+      margin-top:18px;display:flex;gap:10px
+    }
+    .search input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .btn{background:var(--accent);color:#042226;padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+
+    /* Sidebar/top picks */
+    .top-picks{background:var(--card);padding:18px;border-radius:12px}
+    .pick{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .thumb{width:64px;height:64px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;font-weight:700}
+    .pick .meta{font-size:13px}
+    .stars{color:goldenrod;font-weight:700}
+
+    /* Product grid */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .card .title{font-weight:700}
+    .card .desc{color:var(--muted);font-size:14px;margin-top:8px}
+    .meta-row{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+    .badge{background:var(--glass);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;color:var(--muted)}
+
+    /* Review excerpt */
+    .excerpt{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:14px;border-radius:10px;margin-top:16px}
+
+    footer{color:var(--muted);text-align:center;margin-top:36px;padding:28px 0}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start}
+      nav{margin-top:8px}
+    }
+
+    /* Small utilities */
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Star rating (CSS only) */
+    .rating{display:inline-flex;gap:4px;align-items:center}
+    .rating .star{font-size:14px;color:#ffb020}
+
+    /* subtle hover */
+    .card:hover{transform:translateY(-6px);transition:transform .18s ease}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">TA</div>
+        <div>
+          <div class="site-title">TrustAvive</div>
+          <div class="site-sub">Trusted health product reviews</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#reviews">Reviews</a>
+        <a href="#top">Top Picks</a>
+        <a href="#guides">Guides</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Find honest reviews & trusted recommendations</h1>
+        <p>We test health products independently — from supplements to fitness gear — and publish clear pros, cons and buying advice.</p>
+
+        <div class="search">
+          <input type="search" placeholder="Search product, brand or topic">
+          <button class="btn">Search</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="badge">Lab-tested</div>
+          <div class="badge">No affiliate bias</div>
+          <div class="badge">Expert reviews</div>
+        </div>
+
+        <div class="excerpt">
+          <strong>Editor's pick — Best Overall:</strong>
+          <div style="margin-top:8px">ProForm Ultra Daily Multivitamin — Balanced formula, high absorption, and excellent value.</div>
+        </div>
+      </div>
+
+      <aside class="top-picks">
+        <h3 style="margin-top:0;margin-bottom:10px">Top Picks</h3>
+
+        <div class="pick">
+          <div class="thumb">A1</div>
+          <div>
+            <div style="font-weight:700">Daily Multivitamin</div>
+            <div class="small">All-around health • <span class="stars">★★★★☆</span></div>
+          </div>
+        </div>
+
+        <div class="pick">
+          <div class="thumb">P2</div>
+          <div>
+            <div style="font-weight:700">Omega-3 Fish Oil</div>
+            <div class="small">Heart support • <span class="stars">★★★★☆</span></div>
+          </div>
+        </div>
+
+        <div class="pick">
+          <div class="thumb">S3</div>
+          <div>
+            <div style="font-weight:700">Sleep Aid</div>
+            <div class="small">Nightly recovery • <span class="stars">★★★☆☆</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;font-size:13px;color:var(--muted)">Updated: Sept 2025</div>
+      </aside>
+    </section>
+
+    <section id="reviews">
+      <h2 style="margin-bottom:12px">Latest Reviews</h2>
+      <div class="grid">
+
+        <article class="card">
+          <div class="title">ProForm Ultra Daily Multivitamin</div>
+          <div class="desc">A balanced multivitamin with improved bioavailability and minimal fillers.</div>
+          <div class="meta-row">
+            <div class="rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:.25">★</span></div>
+            <div class="small">Pros: high absorption · Cons: slightly pricier</div>
+          </div>
+          <div class="excerpt">
+            <strong>Verdict:</strong> Great daily formula for most adults. Read full test results for lab numbers and dosage guidance.
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="title">OmegaPure Fish Oil Concentrate</div>
+          <div class="desc">High EPA/DHA concentration, third-party tested for purity.</div>
+          <div class="meta-row">
+            <div class="rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="small">Pros: purity · Cons: strong fish taste for some</div>
+          </div>
+          <div class="excerpt">
+            <strong>Verdict:</strong> Best for cardiovascular support and inflammation. See dosing notes inside.
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="title">CalmSleep Natural Night Formula</div>
+          <div class="desc">Herbal blend for sleep with melatonin and magnesium.</div>
+          <div class="meta-row">
+            <div class="rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:.25">★</span><span class="star" style="opacity:.25">★</span></div>
+            <div class="small">Pros: gentle · Cons: less effective long-term</div>
+          </div>
+          <div class="excerpt">
+            <strong>Verdict:</strong> Useful for occasional sleeplessness; not a long-term solution without lifestyle changes.
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="title">FlexiMove Joint Support</div>
+          <div class="desc">Glucosamine & MSM combination for joint mobility.</div>
+          <div class="meta-row">
+            <div class="rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:.25">★</span></div>
+            <div class="small">Pros: noticeable improvement · Cons: needs 6+ weeks</div>
+          </div>
+          <div class="excerpt">
+            <strong>Verdict:</strong> Good option for mild joint stiffness. Follow dosage and consult a doctor if you’re on blood thinners.
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TrustAvive — Built for clear, independent health product reviews • <span class="small">Privacy · Terms</span>
+    </footer>
+  </div>
+</body>
+</html>
